@@ -2,7 +2,7 @@
     <string name="app_name">FragmentExercise</string>
     <string name="drawer_open">Open navigation drawer</string>
     <string name="drawer_close">Close navigation drawer</string>
-    <string name="item_one">Android</string>
-    <string name="item_two">Java</string>
-    <string name="item_three">Public Speaking</string>
+    <string name="item_one">Purple</string>
+    <string name="item_two">Teal</string>
+    <string name="item_three">Aqua</string>
 </resources>
