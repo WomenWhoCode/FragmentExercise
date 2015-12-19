@@ -19,28 +19,18 @@ import com.example.zassmin.fragmentexercise.R;
 public class ColorFragment extends Fragment {
     private static final String COLOR_KEY = "color";
     private OnButtonClickListener listener;
+    private View view;
+    private int colorInt;
+    private String color;
 
     public interface OnButtonClickListener {
         void onButtonClickListener(String hexColor, int colorInt);
-    }
-    public static ColorFragment newInstance(String color) {
-        ColorFragment colorFragment = new ColorFragment();
-        Bundle args = new Bundle();
-        args.putString(COLOR_KEY, color);
-        colorFragment.setArguments(args);
-        return colorFragment;
     }
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_color, container, false);
-
-        // set color
-        TextView tvColorful = (TextView) view.findViewById(R.id.tvColorful);
-        final String color = getArguments().getString(COLOR_KEY, "#00b5a9"); // fallback
-        final int colorInt = Color.parseColor(color);
-        tvColorful.setBackgroundColor(colorInt);
+        view = inflater.inflate(R.layout.fragment_color, container, false);
 
         // button click listener
         Button btnColorful = (Button) view.findViewById(R.id.btnColorful);
@@ -63,5 +53,13 @@ public class ColorFragment extends Fragment {
             throw new ClassCastException(activity.toString()
                     + " must implement ColorFragment.OnButtonClickListener");
         }
+    }
+
+    public void setColor(String colorHex) {
+        // set color
+        TextView tvColorful = (TextView) view.findViewById(R.id.tvColorful);
+        color = colorHex;
+        colorInt = Color.parseColor(color);
+        tvColorful.setBackgroundColor(colorInt);
     }
 }

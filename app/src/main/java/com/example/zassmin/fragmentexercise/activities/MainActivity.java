@@ -2,7 +2,6 @@ package com.example.zassmin.fragmentexercise.activities;
 
 import android.content.res.Configuration;
 import android.support.design.widget.NavigationView;
-import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -20,6 +19,7 @@ public class MainActivity extends AppCompatActivity implements ColorFragment.OnB
     private Toolbar toolbar;
     private ActionBarDrawerToggle mDrawerToggle;
     private NavigationView nvDrawer;
+    private ColorFragment colorFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +37,12 @@ public class MainActivity extends AppCompatActivity implements ColorFragment.OnB
         // set up drawer stuff
         nvDrawer = (NavigationView) findViewById(R.id.nvView);
         setupDrawerContent(nvDrawer);
+
+        if (savedInstanceState == null) {
+            colorFragment = (ColorFragment)
+                    getSupportFragmentManager().findFragmentById(R.id.fColorFragment);
+            colorFragment.setColor("#f68b1f");
+        }
     }
 
     @Override
@@ -81,25 +87,19 @@ public class MainActivity extends AppCompatActivity implements ColorFragment.OnB
 
     private void selectDrawerItem(MenuItem menuItem) {
 
-        String colorStr; // to grab the class
         switch (menuItem.getItemId()) {
             case R.id.nav_one:
-                colorStr = "#65416c";
+                colorFragment.setColor("#65416c");
                 break;
             case R.id.nav_two:
-                colorStr = "#009688";
+                colorFragment.setColor("#009688");
                 break;
             case R.id.nav_three:
-                colorStr = "#75cbc3";
+                colorFragment.setColor("#75cbc3");
                 break;
             default:
-                colorStr = "#f68b1f";
+                colorFragment.setColor("#f68b1f");
         }
-
-        // replace with current
-        Fragment fragment = ColorFragment.newInstance(colorStr);
-        FragmentManager fragmentManager = getSupportFragmentManager();
-        fragmentManager.beginTransaction().replace(R.id.flContent, fragment).commit();
 
         // highlight selected item and close the door
         menuItem.setChecked(true);
