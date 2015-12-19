@@ -2,18 +2,18 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/nav_android_chat"
+            android:id="@+id/nav_one"
             android:icon="@drawable/ic_android"
-            android:title="@string/android_chat" />
+            android:title="@string/item_one" />
 
         <item
-            android:id="@+id/nav_java_chat"
+            android:id="@+id/nav_two"
             android:icon="@drawable/ic_java"
-            android:title="@string/java_chat" />
+            android:title="@string/item_two" />
 
         <item
-            android:id="@+id/nav_public_speaking_chat"
+            android:id="@+id/nav_three"
             android:icon="@drawable/ic_public_speaking"
-            android:title="@string/public_speaking_chat" />
+            android:title="@string/item_three" />
     </group>
 </menu>

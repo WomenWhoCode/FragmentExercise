@@ -2,7 +2,7 @@
     <string name="app_name">FragmentExercise</string>
     <string name="drawer_open">Open navigation drawer</string>
     <string name="drawer_close">Close navigation drawer</string>
-    <string name="android_chat">Android</string>
-    <string name="java_chat">Java</string>
-    <string name="public_speaking_chat">Public Speaking</string>
+    <string name="item_one">Android</string>
+    <string name="item_two">Java</string>
+    <string name="item_three">Public Speaking</string>
 </resources>

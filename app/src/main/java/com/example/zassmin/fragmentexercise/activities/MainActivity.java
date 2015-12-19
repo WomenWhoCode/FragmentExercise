@@ -12,9 +12,10 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 
 import com.example.zassmin.fragmentexercise.R;
+import com.example.zassmin.fragmentexercise.fragments.ColorDialogFragment;
 import com.example.zassmin.fragmentexercise.fragments.ColorFragment;
 
-public class ChatActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements ColorFragment.OnButtonClickListener {
     private DrawerLayout mDrawer;
     private Toolbar toolbar;
     private ActionBarDrawerToggle mDrawerToggle;
@@ -23,7 +24,7 @@ public class ChatActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_chat);
+        setContentView(R.layout.activity_main);
 
         // set tool bar to replace actionbar
         toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -79,30 +80,24 @@ public class ChatActivity extends AppCompatActivity {
     }
 
     private void selectDrawerItem(MenuItem menuItem) {
-        Fragment fragment = null;
 
         String colorStr; // to grab the class
         switch (menuItem.getItemId()) {
-            case R.id.nav_android_chat:
+            case R.id.nav_one:
                 colorStr = "#65416c";
                 break;
-            case R.id.nav_java_chat:
+            case R.id.nav_two:
                 colorStr = "#009688";
                 break;
-            case R.id.nav_public_speaking_chat:
+            case R.id.nav_three:
                 colorStr = "#75cbc3";
                 break;
             default:
                 colorStr = "#f68b1f";
         }
 
-        try {
-            fragment = (Fragment) ColorFragment.newInstance(colorStr);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
         // replace with current
+        Fragment fragment = ColorFragment.newInstance(colorStr);
         FragmentManager fragmentManager = getSupportFragmentManager();
         fragmentManager.beginTransaction().replace(R.id.flContent, fragment).commit();
 
@@ -110,5 +105,13 @@ public class ChatActivity extends AppCompatActivity {
         menuItem.setChecked(true);
         setTitle(menuItem.getTitle());
         mDrawer.closeDrawers();
+    }
+
+    @Override
+    public void onButtonClickListener(String hexColor, int colorInt) {
+        FragmentManager fm = getSupportFragmentManager();
+        String colorIntStr = String.valueOf(colorInt);
+        ColorDialogFragment colorDialog = ColorDialogFragment.newInstance(hexColor, colorIntStr);
+        colorDialog.show(fm, "fragment_color_dialog");
     }
 }
