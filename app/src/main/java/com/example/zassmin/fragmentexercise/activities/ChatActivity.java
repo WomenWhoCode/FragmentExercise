@@ -1,13 +1,18 @@
-package com.example.zassmin.fragmentexercise;
+package com.example.zassmin.fragmentexercise.activities;
 
 import android.content.res.Configuration;
 import android.support.design.widget.NavigationView;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
+
+import com.example.zassmin.fragmentexercise.R;
+import com.example.zassmin.fragmentexercise.fragments.ColorFragment;
 
 public class ChatActivity extends AppCompatActivity {
     private DrawerLayout mDrawer;
@@ -74,6 +79,33 @@ public class ChatActivity extends AppCompatActivity {
     }
 
     private void selectDrawerItem(MenuItem menuItem) {
+        Fragment fragment = null;
+
+        String colorStr; // to grab the class
+        switch (menuItem.getItemId()) {
+            case R.id.nav_android_chat:
+                colorStr = "#65416c";
+                break;
+            case R.id.nav_java_chat:
+                colorStr = "#009688";
+                break;
+            case R.id.nav_public_speaking_chat:
+                colorStr = "#75cbc3";
+                break;
+            default:
+                colorStr = "#f68b1f";
+        }
+
+        try {
+            fragment = (Fragment) ColorFragment.newInstance(colorStr);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        // replace with current
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        fragmentManager.beginTransaction().replace(R.id.flContent, fragment).commit();
+
         // highlight selected item and close the door
         menuItem.setChecked(true);
         setTitle(menuItem.getTitle());
