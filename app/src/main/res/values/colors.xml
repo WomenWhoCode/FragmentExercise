@@ -4,4 +4,8 @@
     <color name="colorPrimaryDark">#303030</color>
     <color name="colorAccent">#eeeeee</color>
     <color name="buttonPrimary">#faa73f</color>
+    <color name="purple">#65416c</color>
+    <color name="teal">#009688</color>
+    <color name="aqua">#75cbc3</color>
+    <color name="orange">#f68b1f</color>
 </resources>

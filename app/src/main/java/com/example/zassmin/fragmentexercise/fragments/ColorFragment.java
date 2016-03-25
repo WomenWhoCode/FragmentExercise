@@ -55,11 +55,9 @@ public class ColorFragment extends Fragment {
         }
     }
 
-    public void setColor(String colorHex) {
+    public void setBackgroundColor(int colorInt) {
         // set color
         TextView tvColorful = (TextView) view.findViewById(R.id.tvColorful);
-        color = colorHex;
-        colorInt = Color.parseColor(color);
         tvColorful.setBackgroundColor(colorInt);
     }
 }

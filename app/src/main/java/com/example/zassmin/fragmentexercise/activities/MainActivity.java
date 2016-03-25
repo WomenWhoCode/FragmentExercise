@@ -3,6 +3,7 @@ package com.example.zassmin.fragmentexercise.activities;
 import android.content.res.Configuration;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.FragmentManager;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
@@ -41,7 +42,7 @@ public class MainActivity extends AppCompatActivity implements ColorFragment.OnB
         if (savedInstanceState == null) {
             colorFragment = (ColorFragment)
                     getSupportFragmentManager().findFragmentById(R.id.fColorFragment);
-            colorFragment.setColor("#f68b1f");
+            colorFragment.setBackgroundColor(ContextCompat.getColor(getApplicationContext(), R.color.orange));
         }
     }
 
@@ -89,16 +90,16 @@ public class MainActivity extends AppCompatActivity implements ColorFragment.OnB
 
         switch (menuItem.getItemId()) {
             case R.id.nav_one:
-                colorFragment.setColor("#65416c");
+                colorFragment.setBackgroundColor(ContextCompat.getColor(getApplicationContext(), R.color.purple));
                 break;
             case R.id.nav_two:
-                colorFragment.setColor("#009688");
+                colorFragment.setBackgroundColor(ContextCompat.getColor(getApplicationContext(), R.color.teal));
                 break;
             case R.id.nav_three:
-                colorFragment.setColor("#75cbc3");
+                colorFragment.setBackgroundColor(ContextCompat.getColor(getApplicationContext(), R.color.aqua));
                 break;
             default:
-                colorFragment.setColor("#f68b1f");
+                colorFragment.setBackgroundColor(ContextCompat.getColor(getApplicationContext(), R.color.orange));
         }
 
         // highlight selected item and close the door
