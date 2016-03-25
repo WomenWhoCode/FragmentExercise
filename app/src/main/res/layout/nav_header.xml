@@ -21,7 +21,7 @@
         android:paddingTop="@dimen/icon_padding"
         android:layout_above="@+id/tvJobTitle"
         android:textStyle="bold"
-        android:text="Adele" />
+        android:text="Cherry Pie" />
 
     <TextView
         android:id="@+id/tvJobTitle"
@@ -29,6 +29,6 @@
         android:layout_height="wrap_content"
         android:paddingTop="@dimen/icon_padding"
         android:layout_alignParentBottom="true"
-        android:text="Singer and Songwriter" />
+        android:text="Loves Colors" />
 
 </RelativeLayout>
