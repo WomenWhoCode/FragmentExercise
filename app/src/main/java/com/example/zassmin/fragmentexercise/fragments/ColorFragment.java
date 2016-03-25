@@ -1,6 +1,7 @@
 package com.example.zassmin.fragmentexercise.fragments;
 
 import android.app.Activity;
+import android.content.Context;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -45,8 +46,9 @@ public class ColorFragment extends Fragment {
     }
 
     @Override
-    public void onAttach(Activity activity) {
-        super.onAttach(activity);
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        Activity activity = (Activity) context;
         if (activity instanceof OnButtonClickListener) {
             listener = (OnButtonClickListener) activity;
         } else {
