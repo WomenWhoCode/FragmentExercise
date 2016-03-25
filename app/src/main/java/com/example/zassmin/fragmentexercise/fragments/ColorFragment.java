@@ -3,6 +3,8 @@ package com.example.zassmin.fragmentexercise.fragments;
 import android.app.Activity;
 import android.content.Context;
 import android.graphics.Color;
+import android.graphics.ColorFilter;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -10,6 +12,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.example.zassmin.fragmentexercise.R;
@@ -21,11 +24,9 @@ public class ColorFragment extends Fragment {
     private static final String COLOR_KEY = "color";
     private OnButtonClickListener listener;
     private View view;
-    private int colorInt;
-    private String color;
 
     public interface OnButtonClickListener {
-        void onButtonClickListener(String hexColor, int colorInt);
+        void onButtonClickListener(int colorInt);
     }
 
     @Nullable
@@ -38,7 +39,9 @@ public class ColorFragment extends Fragment {
         btnColorful.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                listener.onButtonClickListener(color, colorInt);
+                RelativeLayout rl = (RelativeLayout) v.getParent();
+                ColorDrawable colorDrawable = (ColorDrawable) rl.getBackground();
+                listener.onButtonClickListener(colorDrawable.getColor());
             }
         });
 
@@ -58,8 +61,6 @@ public class ColorFragment extends Fragment {
     }
 
     public void setBackgroundColor(int colorInt) {
-        // set color
-        TextView tvColorful = (TextView) view.findViewById(R.id.tvColorful);
-        tvColorful.setBackgroundColor(colorInt);
+        view.setBackgroundColor(colorInt);
     }
 }

@@ -109,10 +109,9 @@ public class MainActivity extends AppCompatActivity implements ColorFragment.OnB
     }
 
     @Override
-    public void onButtonClickListener(String hexColor, int colorInt) {
+    public void onButtonClickListener(int colorInt) {
         FragmentManager fm = getSupportFragmentManager();
-        String colorIntStr = String.valueOf(colorInt);
-        ColorDialogFragment colorDialog = ColorDialogFragment.newInstance(hexColor, colorIntStr);
+        ColorDialogFragment colorDialog = ColorDialogFragment.newInstance(colorInt);
         colorDialog.show(fm, "fragment_color_dialog");
     }
 }
