@@ -2,8 +2,6 @@ package com.example.zassmin.fragmentexercise.activities;
 
 import android.content.res.Configuration;
 import android.support.design.widget.NavigationView;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.content.ContextCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
@@ -12,15 +10,12 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 
 import com.example.zassmin.fragmentexercise.R;
-import com.example.zassmin.fragmentexercise.fragments.ColorDialogFragment;
-import com.example.zassmin.fragmentexercise.fragments.ColorFragment;
 
-public class MainActivity extends AppCompatActivity implements ColorFragment.OnButtonClickListener {
+public class MainActivity extends AppCompatActivity {
     private DrawerLayout mDrawer;
     private Toolbar toolbar;
     private ActionBarDrawerToggle mDrawerToggle;
     private NavigationView nvDrawer;
-    private ColorFragment colorFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,12 +33,6 @@ public class MainActivity extends AppCompatActivity implements ColorFragment.OnB
         // set up drawer stuff
         nvDrawer = (NavigationView) findViewById(R.id.nvView);
         setupDrawerContent(nvDrawer);
-
-        if (savedInstanceState == null) {
-            colorFragment = (ColorFragment)
-                    getSupportFragmentManager().findFragmentById(R.id.fColorFragment);
-            colorFragment.setBackgroundColor(ContextCompat.getColor(getApplicationContext(), R.color.orange));
-        }
     }
 
     @Override
@@ -90,28 +79,17 @@ public class MainActivity extends AppCompatActivity implements ColorFragment.OnB
 
         switch (menuItem.getItemId()) {
             case R.id.nav_one:
-                colorFragment.setBackgroundColor(ContextCompat.getColor(getApplicationContext(), R.color.purple));
                 break;
             case R.id.nav_two:
-                colorFragment.setBackgroundColor(ContextCompat.getColor(getApplicationContext(), R.color.teal));
                 break;
             case R.id.nav_three:
-                colorFragment.setBackgroundColor(ContextCompat.getColor(getApplicationContext(), R.color.aqua));
                 break;
             default:
-                colorFragment.setBackgroundColor(ContextCompat.getColor(getApplicationContext(), R.color.orange));
         }
 
         // highlight selected item and close the door
         menuItem.setChecked(true);
         setTitle(menuItem.getTitle());
         mDrawer.closeDrawers();
-    }
-
-    @Override
-    public void onButtonClickListener(int colorInt) {
-        FragmentManager fm = getSupportFragmentManager();
-        ColorDialogFragment colorDialog = ColorDialogFragment.newInstance(colorInt);
-        colorDialog.show(fm, "fragment_color_dialog");
     }
 }

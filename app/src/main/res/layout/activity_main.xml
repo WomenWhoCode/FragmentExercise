@@ -16,12 +16,6 @@
             android:layout_height="wrap_content"
             android:layout_width="match_parent" />
 
-        <fragment
-            android:name="com.example.zassmin.fragmentexercise.fragments.ColorFragment"
-            android:id="@+id/fColorFragment"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
-
     </LinearLayout>
 
     <!-- The navigation drawer -->
